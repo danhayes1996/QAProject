@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <link href="css/global.css" type="text/css" rel="stylesheet">
+        <link href="css/register.css" type="text/css" rel="stylesheet">
+
+        <title>Sign Up</title>
+    </head>
+
+    <body>
+        <h1>Sign up</h1>
+        <form class="divForm" onsubmit="return handleSubmit(this)">
+            <div class="labels">
+                <p>First Name:</p>
+                <p>Last Name:</p>
+                <p>Email:</p>
+                <p>Password:</p>
+                <!-- <p>Confirm Password:</p> -->
+            </div>
+            <div class="inputs">
+                <input id="fname" class="registerInput" type="text">   
+                <input id="lname" class="registerInput" type="text">   
+                <input id="email" class="registerInput" type="email">
+                <input id="password" class="registerInput" type="password">
+                <!-- <input id="cpass" class="registerInput" type="password"> -->
+            </div>
+            <input id="submitBtn" type="submit" value="Sign Up">
+        </form> 
+
+        <!-- Scripts  -->
+        <script src="js/request.js"></script>
+        <script src="js/register.js"></script>
+    </body>
+</html>

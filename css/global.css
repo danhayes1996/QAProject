@@ -1,0 +1,76 @@
+.divForm {
+    width: 450px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    padding: 10px 0 20px 0;
+    text-align: center;
+    /* background-color: white; */
+}
+
+h1, p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    /* color: white; */
+}
+
+input {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    font-size: 15px;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    background-color: #CCCCCC;
+    border: 1px solid #CCCCCC;
+    cursor: pointer;
+    /* color: white; */
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+    padding: 5px;
+}
+
+.labels { 
+    float: left; /*ps lean left */
+    text-align: right; /*ps text lean right*/
+    width: 35%;
+    padding-right: 6px;
+}
+
+.labels p {
+    padding-bottom: 2px;
+}
+
+.inputs {
+    padding-top: 12px;
+    text-align: left; /*textboxes lean left*/
+}
+
+.inputs input {
+    padding-left: 3px; /*textbox text padding*/
+    margin-bottom: 10px;
+    width: 50%;
+    height: 27px;
+    border: 1px solid #DDDDDD;
+}
+
+input#submitBtn {
+    width: 80%;
+    margin: 0 auto;
+    height: 35px;
+}
+
+/* #submitBtn:hover {
+    background-color: #55AAFF;
+    border: 1px solid #55AAFF;
+    cursor: pointer;
+    color: white;
+} */

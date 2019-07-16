@@ -1,0 +1,68 @@
+/* for debug */
+body {
+    height: 2000px;
+}
+
+#searchBar {
+    margin: 0 auto;
+    width: 400px;
+    background-color: transparent;
+
+    /* Vertically center children */
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#searchText {
+    /* how to shrink based on screen width?? */
+    width: 300px;
+}
+
+.searchBtn {
+    margin-left: 5px;
+    width: 80px;
+}
+
+#searchResults {
+    position: fixed;
+    top: 27px;
+    width: 298px;
+    z-index: -1;
+    
+    background-color: #FCFCFC;
+    border: 1px solid #CCCCCC;
+    border-top: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    display:none;
+}
+
+.result {
+    border-top: 1px solid #CCCCCC;
+}
+
+.result p {  
+    margin: 10px 2px;
+}
+
+#signUpIn {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #555555;
+    position:fixed;
+}
+
+.userControl {
+    margin-right: 5px;
+    float: right;
+    width: 80px;
+
+    /* Vertically center buttons in signUpIn div */
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

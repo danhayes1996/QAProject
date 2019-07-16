@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link href="css/global.css" type="text/css" rel="stylesheet">
+        <link href="css/home.css" type="text/css" rel="stylesheet">
+        
+        <title>Games Site</title>
+    </head>
+
+    <body>
+        <div id="signUpIn">
+            <input class="userControl" type="button" onclick="signIn()" value="Sign in">
+            <input class="userControl" type="button" onclick="signUp()" value="Sign up">
+            <div id="searchBar">
+                <!-- on search button click or enter pressed then goto search.html to show search results  -->
+                <div id="searchResults">
+                    <!-- put api call results here -->
+
+                    <!-- FAKE RESULTS  -->
+                    <div class="result">
+                        <p> RESULT </p>
+                    </div>
+                    <div class="result">
+                        <p> RESULT </p>
+                    </div>
+                    <div class="result">
+                        <p> RESULT </p>
+                    </div>
+                    <div class="result">
+                        <p> RESULT </p>
+                    </div>
+                </div>
+                <input id="searchText" type="text" onkeyup="checkForGames()" onfocusout="hideResults()" placeholder="Search">
+                <input class="searchBtn" type="button" value="Search">
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="js/request.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>
