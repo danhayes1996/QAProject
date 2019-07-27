@@ -9,10 +9,6 @@ body {
     top: 0;
 }
 
-.nav-link {
-    float: right;
-}
-
 .nav-link:hover {
     cursor: pointer;
 }

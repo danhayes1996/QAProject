@@ -21,3 +21,24 @@ function makeRequest(method, url, body) {
         xhr.send(body || null);
     });
 }
+
+function fixVarNames(v) {
+    v = v[0].toUpperCase() + v.substring(1);
+    for(let i = 1; i < v.length; i++) {
+        if(v[i] === v[i].toUpperCase()) {
+            v = v.substring(0, i) + " " + v.substring(i);
+            i++;
+        }
+    }
+    return v;
+}
+
+function capitalizeWords(s) {
+    s = s[0].toUpperCase() + s.substring(1);
+    for(let i = 1; i < s.length; i++) {
+        if(s[i - 1] === ' ') {
+            s = s.substring(0, i) + s[i].toUpperCase() + s.substring(i + 1);
+        }
+    }
+    return s;
+}

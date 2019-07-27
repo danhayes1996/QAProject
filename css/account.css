@@ -1,6 +1,6 @@
 
 /* TODO: css to transition the div on screen??? */
-#registerError {
+/* #registerError {
     position: fixed;
     left: 50%;
     bottom: 2px;
@@ -16,4 +16,65 @@
     color: white;
 
     display: none;
+} */
+
+.content {
+    margin: 0 auto;
+    width: 60%;
+    min-width: 500px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.userData {
+    padding: 10px;
+}
+
+.userInputs {
+    padding-top: 1em;
+    padding-left: 10px;
+}
+
+.userInputs input {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.userLabels {
+    border-right: 1px solid #dddddd;
+    margin-top: 2px;
+    padding-right: 10px;
+    max-width: 180px;
+}
+
+.userLabels p {
+    padding-top: 1em;
+    margin-bottom: 0px;
+}
+
+#emailLabel {
+    margin-bottom: 1em;
+}
+
+#updateBtn, 
+#savePwdBtn {
+    width: 100px;
+    height: 30px;
+    margin-bottom: 0;
+}
+
+#deleteBtn {
+    margin-top: 20px;
+
+    width: 100%;
+    min-width: 500px;
+    height: 37px;
+}
+
+#deleteBtn:hover {
+    background-color: #ff4444;
+    border: 1px solid #ff4444;
+    color: white;
 }
