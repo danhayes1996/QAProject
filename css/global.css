@@ -55,10 +55,10 @@ input[type="password"] {
 }
 
 .inputs input {
-    padding-left: 3px; /*textbox text padding*/
+    /*padding-left: 3px; /*textbox text padding*/
     margin-bottom: 10px;
     width: 50%;
-    height: 27px;
+    /*height: 27px;*/
     border: 1px solid #DDDDDD;
 }
 

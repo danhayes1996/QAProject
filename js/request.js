@@ -3,15 +3,21 @@ function makeRequest(method, url, body) {
         const xhr = new XMLHttpRequest();
         xhr.onload = () => {
             if (xhr.status >= 200 && xhr.status <= 299) {
-                resolve(JSON.parse(xhr.responseText));
+                //console.log('response text: ', xhr.responseText);
+                if(xhr.responseText !== ''){
+                    resolve(JSON.parse(xhr.responseText));
+                } else {
+                    //console.log('response type: ', xhr.responseType);
+                    reject('Error couldnt get response text "' + xhr.responseText + '"');
+                }
             } else {
-                reject('Error!: ' + xhr.responseText);
+                reject('Error (' + xhr.status + ')' + xhr.responseText);
             }
         };
         xhr.open(method, url);
-        if(method === 'POST' ){
-            xhr.setRequestHeader('Content-Type', 'application/json');
-        }
+        // if(method === 'POST' ){
+        // }
+        xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(body || null);
     });
 }

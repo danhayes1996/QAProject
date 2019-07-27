@@ -3,15 +3,31 @@ body {
     height: 2000px;
 }
 
-#searchBar {
-    margin: 0 auto;
-    width: 400px;
-    background-color: transparent;
+#navBar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.nav-link {
+    float: right;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+}
+
+#searchBar.container {
+    /* margin: 0 auto; */
+    /* background-color: transparent; */
 
     /* Vertically center children */
-    position: relative;
+    /* position: relative;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); */
+    width: 60%;
+    margin: 0;
+    padding: 0;
 }
 
 #searchText {
@@ -25,10 +41,28 @@ body {
 }
 
 #searchResults {
+    width: 300px;
+    margin-top: -3;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    z-index: -1;
+}
+
+#popularGames, #recentGames {
+    top: 80px;
+    width: 80%;
+    margin: 0 auto 20px auto;
+}
+
+/* #searchResults {
     position: fixed;
-    top: 27px;
+    /* top: 27px;
     width: 298px;
     z-index: -1;
+    
+    /* added for home2.html
+    top: 52px;
     
     background-color: #FCFCFC;
     border: 1px solid #CCCCCC;
@@ -37,13 +71,13 @@ body {
     border-bottom-right-radius: 3px;
 
     display:none;
-}
+} */
 
-.result {
+.dropdown-item {
     border-top: 1px solid #CCCCCC;
 }
 
-.result p {  
+.dropdown-item p {  
     margin: 10px 2px;
 }
 
