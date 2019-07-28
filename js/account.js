@@ -3,11 +3,11 @@ function loadAccount (){
     if(userId) {
         makeRequest('GET', 'http://localhost:8080/GamesApp/api/user/get/' + userId)
             .then (value => {
-                console.log(value);
+                //console.log(value);
                 if(value.error) {
-                    
+                    window.location = "login.html";
                 } else {
-                    createPage(value);
+                    populatePage(value);
                 }
             });
     } else {
@@ -15,14 +15,13 @@ function loadAccount (){
     }
 }
 
-function createPage(userInfo) {
+function populatePage(userInfo) {
     const { id, password, ...other } = userInfo;
     const inputs = document.getElementsByClassName('input');
     let i = 0;
     for(e in other) {
         inputs[i++].value = other[e]; 
     }
-
 }
 
 function enableInputs() {
@@ -30,12 +29,16 @@ function enableInputs() {
     for(i of inputs){
         i.disabled = false;
     }
-    const updateBtn = document.getElementById('updateBtn');
-    updateBtn.value = "Save";
-    updateBtn.onclick = (event) => {
-        event.stopPropagation(); //absorb click
-        updateUserInfo();
-    };
+    showSaveBtn();
+    document.getElementById('cancelBtn').style.display = "block";
+}
+
+function disableInputs() {
+    const inputs = document.getElementsByClassName('input');
+    for(i of inputs){
+        i.disabled = true;
+    }
+    document.getElementById('cancelBtn').style.display = "none";
 }
 
 function updateUserInfo() {
@@ -44,21 +47,61 @@ function updateUserInfo() {
     for(i of inputs){
         data[i.id] = i.value;
     }
-    console.log(data);
+    //console.log(data);
     const userId = sessionStorage.getItem('userId');
     makeRequest('POST', 'http://localhost:8080/GamesApp/api/user/update/' + userId, JSON.stringify(data))
         .then(value => {
-            console.log(value);
-            for(i of inputs){
-                i.disabled = true;
-            }
-            const updateBtn = document.getElementById('updateBtn');
-            updateBtn.value = "Update";
-            updateBtn.onclick = (event) => {
-                event.stopPropagation(); //absorb click
-                enableInputs();
-            };
+            //console.log(value);
+            disableInputs();
+            showUpdateBtn();
         });
+}
+
+function cancelUserInfoUpdate(){
+    disableInputs();
+    loadAccount();
+    showUpdateBtn();
+}
+
+function showUpdateBtn() {
+    const updateBtn = document.getElementById('updateBtn');
+    updateBtn.value = "Update";
+    updateBtn.onclick = (event) => {
+        event.stopPropagation(); //absorb click
+        enableInputs();
+    };
+}
+
+function showSaveBtn() {
+    const updateBtn = document.getElementById('updateBtn');
+    updateBtn.value = "Save";
+    updateBtn.onclick = (event) => {
+        event.stopPropagation(); //absorb click
+        updateUserInfo();
+    };
+}
+
+function updatePassword() {
+    const pwd = document.getElementById('pwd');
+    const cpwd = document.getElementById('cpwd');
+    if(pwd.value === cpwd.value && pwd.value !== "") {
+        const userId = sessionStorage.getItem('userId');
+        const data = { 'password' : pwd.value };
+        makeRequest('POST', 'http://localhost:8080/GamesApp/api/user/update/' + userId, JSON.stringify(data))
+        .then (value => {
+            console.log(value);
+            if(value.error) {
+                window.alert("Password couldnt be updated.");
+            } else { 
+                pwd.value = cpwd.value = "";
+                window.alert("Your password has been updated");
+            }
+        });
+    } else {
+        pwd.value = cpwd.value = "";
+        window.alert("passwords arent the same");
+
+    }
 }
 
 function deleteAccount() {
@@ -67,20 +110,13 @@ function deleteAccount() {
     makeRequest('DELETE', 'http://localhost:8080/GamesApp/api/user/delete/' + userId)
         .then(value => {
             console.log(value);
+            window.alert("Your account has been deleted, you will be returned to the home page.");
+            sessionStorage.removeItem('userId');
+            window.location = "home.html";
         })
 }
 
-function updatePassword() {
-    const pwd = document.getElementById('pwd').value;
-    const cpwd = document.getElementById('cpwd').value;
-    if(pwd === cpwd) {
-        const userId = sessionStorage.getItem('userId');
-        const data = { 'password' : pwd };
-        makeRequest('POST', 'http://localhost:8080/GamesApp/api/user/update/' + userId, JSON.stringify(data))
-            .then (value => {
-                console.log(value);
-            });
-    } else {
-        window.alert("passwords arent the same");
-    }
+function signOut() {
+    sessionStorage.removeItem('userId');
+    window.location = "home.html";
 }

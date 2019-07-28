@@ -8,9 +8,9 @@
     </head>
 
     <body>
-        <h1>Sign in</h1>
+        <!-- <h1>Sign in</h1> -->
 
-        <form class="card" onsubmit="return login()">
+        <!-- <form class="card" onsubmit="return login()">
             <div class="card-body text-center">
                 <div class="labels">
                     <p>Email:</p>
@@ -23,6 +23,21 @@
                 <input id="submitBtn" type="submit" value="Sign In">
                 <p class="signupLink">Not made an account? <a class="signupLink" href="register.html">Sign Up</a></p>
             </div>
+        </form> -->
+
+        <form class="userInfo card mt-3" onsubmit="return login()">
+            <h4 class="card-header">Sign In</h4>
+            <div class="userData container row">
+                <div class="userLabels col text-right">
+                    <p>Email:</p>
+                    <p>Password:</p>
+                </div>
+                <div class="userInputs col text-left">
+                    <input id="email" class="input" type="email">
+                    <input id="password" class="input" type="password">
+                </div>
+            </div>
+            <input id="submitBtn" type="submit" value="Sign In">
         </form>
 
         <div id="loginError">

@@ -3,31 +3,13 @@ body {
     height: 2000px;
 }
 
-#navBar {
-    position: fixed;
-    width: 100%;
-    top: 0;
-}
-
-.nav-link:hover {
-    cursor: pointer;
-}
-
 #searchBar.container {
-    /* margin: 0 auto; */
-    /* background-color: transparent; */
-
-    /* Vertically center children */
-    /* position: relative;
-    top: 50%;
-    transform: translateY(-50%); */
     width: 60%;
     margin: 0;
     padding: 0;
 }
 
 #searchText {
-    /* how to shrink based on screen width?? */
     width: 300px;
 }
 
@@ -45,30 +27,6 @@ body {
     z-index: -1;
 }
 
-#popularGames, #recentGames {
-    top: 80px;
-    width: 80%;
-    margin: 0 auto 20px auto;
-}
-
-/* #searchResults {
-    position: fixed;
-    /* top: 27px;
-    width: 298px;
-    z-index: -1;
-    
-    /* added for home2.html
-    top: 52px;
-    
-    background-color: #FCFCFC;
-    border: 1px solid #CCCCCC;
-    border-top: none;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-
-    display:none;
-} */
-
 .dropdown-item {
     border-top: 1px solid #CCCCCC;
 }
@@ -84,15 +42,4 @@ body {
     height: 40px;
     background-color: #555555;
     position:fixed;
-}
-
-.userControl {
-    margin-right: 5px;
-    float: right;
-    width: 80px;
-
-    /* Vertically center buttons in signUpIn div */
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
 }

@@ -7,15 +7,16 @@
     </head>
 
     <body onload="setupNav()">
+        <div class="content">
+            <div id="popularGames" class="card">
+                <div class="card-header">Most Popular</div>
+                <div class="card-body"></div>
+            </div>
 
-        <div id="popularGames" class="card">
-            <div class="card-header">Most Popular</div>
-            <div class="card-body"></div>
-        </div>
-
-        <div id="recentGames" class="card">
-            <div class="card-header">Recently Added</div>
-            <div class="card-body"></div>
+            <div id="recentGames" class="card">
+                <div class="card-header">Recently Added</div>
+                <div class="card-body"></div>
+            </div>
         </div>
 
         <nav id="navBar" class="navbar navbar-light bg-light">
@@ -23,14 +24,13 @@
             
             <!-- search -->
             <form id="searchBar" class="form-inline my-2 my-lg-0 justify-content-center container">
-                
                 <div class="dropdown">
                     <input id="searchText" class="form-control mr-sm-2" type="search" onkeyup="checkForGames()" placeholder="Search" autocomplete="off" aria-label="Search">
                     <div id="searchResults" class="dropdown-menu">
                         <!-- api call results here -->
                     </div>
                 </div>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
                 
             </form>
             <!-- btn for sign up/in if screen too small -->

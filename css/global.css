@@ -1,22 +1,60 @@
-.divForm {
-    width: 450px;
-    margin: 0 auto;
-    border-radius: 5px;
-    border: 1px solid #DDDDDD;
-    padding: 10px 0 20px 0;
-    text-align: center;
-    /* background-color: white; */
+nav {
+    min-width: 500px;
 }
 
-h1, p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.content {
+    margin: 80px auto 20px auto;
+    width: 60%;
+    min-width: 500px;
+    max-width: 650px;
 }
 
-h1 {
-    text-align: center;
-    /* color: white; */
+/* -------- NAV BAR -------- */
+#navBar {
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
+.nav-link:hover {
+    cursor: pointer;
+}
+/* ------------------------- */
+
+
+/* --------- FORMS --------- */
+.card {
+    margin-top: 20px;
+}
+
+.userData {
+    padding: 10px;
+}
+
+.userInputs {
+    padding-top: 1em;
+    padding-left: 10px;
+}
+
+.userInputs input {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.userLabels {
+    border-right: 1px solid #dddddd;
+    margin-top: 2px;
+    padding-right: 10px;
+    max-width: 165px;
+}
+
+.userLabels p {
+    padding-top: 1em;
+    margin-bottom: 0px;
+}
+/* ------------------------- */
+
+/* -------- INPUTS --------- */
 input {
     height: 30px;
     border-radius: 5px;
@@ -29,7 +67,6 @@ input[type="submit"]:hover {
     background-color: #CCCCCC;
     border: 1px solid #CCCCCC;
     cursor: pointer;
-    /* color: white; */
 }
 
 input[type="text"], 
@@ -38,39 +75,9 @@ input[type="password"] {
     padding: 5px;
 }
 
-.labels { 
-    float: left; /*ps lean left */
-    text-align: right; /*ps text lean right*/
-    width: 35%;
-    padding-right: 6px;
-}
-
-.labels p {
-    padding-bottom: 2px;
-}
-
-.inputs {
-    padding-top: 12px;
-    text-align: left; /*textboxes lean left*/
-}
-
-.inputs input {
-    /*padding-left: 3px; /*textbox text padding*/
-    margin-bottom: 10px;
-    width: 50%;
-    /*height: 27px;*/
-    border: 1px solid #DDDDDD;
-}
-
 input#submitBtn {
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 1em auto;
     height: 35px;
 }
-
-/* #submitBtn:hover {
-    background-color: #55AAFF;
-    border: 1px solid #55AAFF;
-    cursor: pointer;
-    color: white;
-} */
+/* ------------------------- */
