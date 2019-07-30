@@ -8,27 +8,28 @@
     </head>
 
     <body>
-        <h1>Sign up</h1>
-        <form class="divForm" onsubmit="return signup()">
-            <div class="labels">
-                <p>First Name:</p>
-                <p>Last Name:</p>
-                <p>Email:</p>
-                <p>Password:</p>
-                <!-- <p>Confirm Password:</p> -->
+        <div class="content">
+            <form class="userInfo card mt-3" onsubmit="return signup()">
+                <h4 class="card-header">Sign Up</h4>
+                <div class="userData container row">
+                    <div class="userLabels col text-right">
+                        <p>First Name:</p>
+                        <p>Last Name:</p>
+                        <p>Email:</p>
+                        <p>Password:</p>
+                    </div>
+                    <div class="userInputs col text-left">
+                        <input id="firstName" class="registerInput" type="text">   
+                        <input id="lastName" class="registerInput" type="text">   
+                        <input id="email" class="registerInput" type="email">
+                        <input id="password" class="registerInput" type="password">
+                    </div>
+                </div>
+                <input id="submitBtn" type="submit" value="Sign Up">
+            </form>
+            <div id="registerError">
+                
             </div>
-            <div class="inputs">
-                <input id="firstName" class="registerInput" type="text">   
-                <input id="lastName" class="registerInput" type="text">   
-                <input id="email" class="registerInput" type="email">
-                <input id="password" class="registerInput" type="password">
-                <!-- <input id="cpass" class="registerInput" type="password"> -->
-            </div>
-            <input id="submitBtn" type="submit" value="Sign Up">
-        </form> 
-
-        <div id="registerError">
-            
         </div>
 
 
