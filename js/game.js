@@ -11,23 +11,20 @@ function loadGame() {
         });
 }
 
-function createPageLayout(game) {
-    const parentDiv = document.getElementById('content');
-    const div = document.createElement('div');
-    div.className = "card";
+function createPageLayout(game) {  
+    const gameDiv = document.getElementById('game');
+    const header = document.getElementById('gameTitle');
+    header.innerText = capitalizeWords(game.name);
 
-    const header = document.createElement('div');
-    header.className = "card-header";
-    header.innerText = capitalizeWords(game.name) + ' (YEAR)' ;
-    div.append(header);
-
-    const description = document.createElement('div');
-    description.className = 'card-body';
+    const description = document.getElementById('description');
     description.innerText = game.description;
-    div.append(description);
 
-    parentDiv.append(div);
-    createReviews(game.reviews, parentDiv);
+    const imageDiv = document.getElementById('image');
+    const image = document.createElement('img');
+    image.setAttribute('src', game.imageURL);
+    imageDiv.append(image);
+
+    createReviews(game.reviews, gameDiv);
 }
 
 function createReviews(reviews, parentDiv) {
@@ -39,10 +36,11 @@ function createReviews(reviews, parentDiv) {
     header.innerText = 'Reviews';
     div.append(header);
    
-    for(const review of reviews) {
-        createReviews(review, div);
+    if(reviews) {
+        for(const review of reviews) {
+            createReview(review, div);
+        }
     }
-
     parentDiv.append(div);
 }
 

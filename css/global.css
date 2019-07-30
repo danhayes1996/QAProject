@@ -80,4 +80,14 @@ input#submitBtn {
     margin: 0 auto 1em auto;
     height: 35px;
 }
+
+input#submitBtn:disabled {
+    cursor: not-allowed;
+}
+
+input#submitBtn:disabled:hover {
+    cursor: not-allowed;
+    background-color: #DDDDDD;
+    border: 1px solid #DDDDDD;
+}
 /* ------------------------- */
