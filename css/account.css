@@ -1,0 +1,30 @@
+#emailLabel {
+    margin-bottom: 1em;
+}
+
+#updateBtn,
+#cancelBtn,  
+#savePwdBtn {
+    width: 100px;
+    height: 30px;
+    margin-bottom: 0;
+}
+
+#cancelBtn {
+    display: none;
+    margin-right: 5px;
+}
+
+#deleteBtn {
+    margin-top: 20px;
+
+    width: 100%;
+    min-width: 500px;
+    height: 37px;
+}
+
+#deleteBtn:hover {
+    background-color: #ff4444;
+    border: 1px solid #ff4444;
+    color: white;
+}

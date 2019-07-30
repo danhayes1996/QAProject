@@ -1,0 +1,83 @@
+nav {
+    min-width: 500px;
+}
+
+.content {
+    margin: 80px auto 20px auto;
+    width: 60%;
+    min-width: 500px;
+    max-width: 650px;
+}
+
+/* -------- NAV BAR -------- */
+#navBar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+}
+/* ------------------------- */
+
+
+/* --------- FORMS --------- */
+.card {
+    margin-top: 20px;
+}
+
+.userData {
+    padding: 10px;
+}
+
+.userInputs {
+    padding-top: 1em;
+    padding-left: 10px;
+}
+
+.userInputs input {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.userLabels {
+    border-right: 1px solid #dddddd;
+    margin-top: 2px;
+    padding-right: 10px;
+    max-width: 165px;
+}
+
+.userLabels p {
+    padding-top: 1em;
+    margin-bottom: 0px;
+}
+/* ------------------------- */
+
+/* -------- INPUTS --------- */
+input {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    font-size: 15px;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    background-color: #CCCCCC;
+    border: 1px solid #CCCCCC;
+    cursor: pointer;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+    padding: 5px;
+}
+
+input#submitBtn {
+    width: 80%;
+    margin: 0 auto 1em auto;
+    height: 35px;
+}
+/* ------------------------- */
