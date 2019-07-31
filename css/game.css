@@ -100,3 +100,7 @@
 .review {
     padding: 10px;
 }
+
+#deleteBtn {
+    float:right;
+}
