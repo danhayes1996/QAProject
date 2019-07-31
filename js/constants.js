@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080/GamesApp/api';//'http://35.230.156.198:8081/GamesApp/api';
+const BASE_URL = 'http://localhost:8080/GamesApp/api';
 const GAMES = '/game';
 const USERS = '/user';
 const REVIEWS = '/review';
