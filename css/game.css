@@ -93,7 +93,10 @@
 }
 
 #upvoteBtn,
-#downvoteBtn {
+#downvoteBtn,
+#deleteBtn,
+#updateBtn {
+    width: 80px;
     margin-left: 10px;
 }
 
@@ -101,6 +104,13 @@
     padding: 10px;
 }
 
-#deleteBtn {
-    float:right;
+#deleteBtn,
+#updateBtn {
+    float: right;
+}
+
+#deleteBtn:hover {
+    background-color: #ff4444;
+    border: 1px solid #ff4444;
+    color: white;
 }

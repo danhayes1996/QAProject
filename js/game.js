@@ -46,7 +46,7 @@ function setupWriteReview(parentDiv) {
     }
 }
 
-function createWriteReview(parentDiv){
+function createWriteReview(parentDiv/*, titleText, contentText*/){
     const div = document.createElement('div');
     div.className = 'writeReview';
 
@@ -54,12 +54,18 @@ function createWriteReview(parentDiv){
     title.id = "userReviewTitle";
     title.setAttribute('type', 'text');
     title.setAttribute('placeholder', 'Review Title...');
+    //if(titleText) {
+        //title.setAttribute('value', titleText);
+    //}
     div.append(title);
 
     const content = createElement('textarea', '', 'reviewTB');
     content.id = "userReviewContent";
     content.setAttribute('rows', '5');
     content.setAttribute('placeholder', 'Review Content...');
+    //if(contentText) {
+        //content.value = contentText;
+    //}
     div.append(content);
     
     const submitBtn = document.createElement('input');
@@ -129,7 +135,7 @@ function createReview(review, parentDiv) {
     const header = document.createElement('div');
     header.className = "reviewHeader d-flex";
 
-    createElement('h6', review.title, 'reviewTitle card-title', header);
+    const title = createElement('h6', review.title, 'reviewTitle card-title', header);
     createElement('p', ' - ' + review.user.firstName + ' ' + review.user.lastName, 'reviewUser text-muted', header);
 
     const content = createElement('div', review.content, 'card-body reviewContent');
@@ -137,39 +143,43 @@ function createReview(review, parentDiv) {
     upvotes.className = "reviewUpvote";
 
     const p = createElement('p', 'Upvotes: ' + review.upvotes, '', upvotes);
-    const like = document.createElement('input');
-    like.setAttribute('type', 'button');
-    like.setAttribute('value', 'Upvote');
-    like.id ="upvoteBtn";
-    like.onclick = (event) => {
-        //console.log('pre upvote', review.upvotes);
-        sendUpvote(review.id, review.upvotes + 1);
-        //console.log('post upvote', review.upvotes);
-    };
 
-    const dislike = document.createElement('input');
-    dislike.setAttribute('type', 'button');
-    dislike.setAttribute('value', 'Downvote');
-    dislike.id ="downvoteBtn";
+    const like = createButton('Upvote', 'upvoteBtn', p);
+    like.onclick = (event) => {
+        sendUpvote(review.id, review.upvotes + 1);
+    };
+    
+    const dislike = createButton('Downvote', 'downvoteBtn', p);
     dislike.onclick = (event) => {
         sendUpvote(review.id, review.upvotes - 1);
     };
-    
-    p.append(like, dislike);
+
     parentDiv.append(header, content, upvotes);
     
     const userId = sessionStorage.getItem('userId');
     if(parseInt(userId) === review.user.id){
-        const deleteBtn = document.createElement('input');
-        deleteBtn.setAttribute('type', 'button');
-        deleteBtn.setAttribute('value', 'Delete');
-        deleteBtn.id ="deleteBtn";
+        const deleteBtn = createButton('Delete', 'deleteBtn', p);
         deleteBtn.onclick = (event) => {
             deleteReview(review.id);
         };
-        p.append(deleteBtn);
+
+        // const updateBtn = createButton('Update', 'updateBtn', p);
+        // updateBtn.onclick = (event) => {
+        //     setupUpdate(review.id, title, content, parentDiv);
+        // };
     }
 }
+
+// function setupUpdate(reviewId, title, content, parentDiv) {
+//     while(parentDiv.lastChild) {
+//         parentDiv.removeChild(parentDiv.lastChild);
+//     }
+
+//     const titleText = title.innerText;
+//     const contentText = content.innerText;  
+//     createWriteReview(parentDiv, titleText, contentText);
+
+// }
 
 function sendReview() {
     const userId = sessionStorage.getItem('userId');
@@ -234,6 +244,15 @@ function createElement(tag, content, className, parentDiv){
     if(className) { e.className = className; }
     if(parentDiv) { parentDiv.append(e); }
     return e;
+}
+
+function createButton(value, id, parentDiv) {
+    const btn = document.createElement('input');
+    btn.setAttribute('type', 'button');
+    if(value) { btn.setAttribute('value', value); }
+    if(id) { btn.id = id; }
+    if(parentDiv) { parentDiv.append(btn); }
+    return btn;
 }
 
 function signOut() {
