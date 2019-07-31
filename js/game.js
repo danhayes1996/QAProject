@@ -125,7 +125,7 @@ function createReviews(reviews, parentDiv) {
 }
 
 function createReview(review, parentDiv) {
-    console.log(review);
+    //console.log(review);
     const header = document.createElement('div');
     header.className = "reviewHeader d-flex";
 
@@ -142,10 +142,9 @@ function createReview(review, parentDiv) {
     like.setAttribute('value', 'Upvote');
     like.id ="upvoteBtn";
     like.onclick = (event) => {
-        console.log('pre upvote', review.upvotes);
-        sendUpvote(review.id, review.upvotes
-             + 1);
-        console.log('post upvote', review.upvotes);
+        //console.log('pre upvote', review.upvotes);
+        sendUpvote(review.id, review.upvotes + 1);
+        //console.log('post upvote', review.upvotes);
     };
 
     const dislike = document.createElement('input');
@@ -155,10 +154,21 @@ function createReview(review, parentDiv) {
     dislike.onclick = (event) => {
         sendUpvote(review.id, review.upvotes - 1);
     };
-
+    
     p.append(like, dislike);
-
     parentDiv.append(header, content, upvotes);
+    
+    const userId = sessionStorage.getItem('userId');
+    if(parseInt(userId) === review.user.id){
+        const deleteBtn = document.createElement('input');
+        deleteBtn.setAttribute('type', 'button');
+        deleteBtn.setAttribute('value', 'Delete');
+        deleteBtn.id ="deleteBtn";
+        deleteBtn.onclick = (event) => {
+            deleteReview(review.id);
+        };
+        p.append(deleteBtn);
+    }
 }
 
 function sendReview() {
@@ -206,6 +216,16 @@ function setupNav() {
         sOut.style.display = "none";
         acc.style.display = "none";
     }
+}
+
+function deleteReview(reviewId) {
+    makeRequest('DELETE', BASE_URL + REVIEWS + REMOVE + '/' + reviewId)
+        .then(value => {
+            if(!value.error){
+                console.log('deleted');
+                window.location = "game.html";
+            }
+        });
 }
 
 function createElement(tag, content, className, parentDiv){
