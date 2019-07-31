@@ -108,13 +108,18 @@ function createReviews(reviews, parentDiv) {
    
     setupWriteReview(div);
 
-    if(reviews) {
+    if(reviews.length > 0) {
         for(const review of reviews) {
             const reviewDiv = document.createElement('div');
             reviewDiv.className = 'review';
             createReview(review, reviewDiv);
             div.append(reviewDiv);
         }
+    } else {
+        const p = document.createElement('p');
+        p.innerText = "Looks like there are no reviews for this game yet. Be the first to write a review";
+        p.className = "text-center";
+        div.append(p);
     }
     parentDiv.append(div);
 }

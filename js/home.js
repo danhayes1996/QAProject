@@ -1,3 +1,9 @@
+
+function populate() {
+    setupNav();
+    getNewReleases();    
+}
+
 function setupNav() {
     const sIn = document.getElementById('signin'); 
     const sUp = document.getElementById('signup'); 
@@ -16,6 +22,36 @@ function setupNav() {
         sOut.style.display = "none";
         acc.style.display = "none";
     }
+}
+
+function getNewReleases() {
+    makeRequest('GET', BASE_URL + GAMES + NEW)
+        .then(value => {
+            const div =  document.getElementById('newGames');
+            for(game of value) {
+                createGame(game, div);
+            }
+        });
+}
+
+function createGame(game, parentDiv) {
+    const div = document.createElement('div');
+    div.className = "game card";
+    div.onclick = (event) => {
+        sessionStorage.setItem('gameId', game.id);
+        window.location = "game.html";
+    };
+
+    const img = document.createElement('img');
+    img.className = "rounded";
+    img.setAttribute('src', game.imageURL);
+
+    const p = document.createElement('p');
+    p.innerText = game.name;
+    p.className = "text-center";
+
+    div.append(img, p);
+    parentDiv.append(div);
 }
 
 function signIn() {
@@ -46,7 +82,7 @@ function checkForGames() {
             if(value && value.length > 0) {
                 console.log("is array", Array.isArray(value), value)
                 for(const key in value){
-                    createGame(value[key], resultsDiv);
+                    createGameInList(value[key], resultsDiv);
                 }
                 //display results
                 document.getElementById("searchResults").style.display = "block";
@@ -57,7 +93,7 @@ function checkForGames() {
         });
 }
 
-function createGame(game, parentDiv) {
+function createGameInList(game, parentDiv) {
     //console.log('game', game);
     const div = document.createElement('div');
     div.className = 'dropdown-item';

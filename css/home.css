@@ -1,6 +1,5 @@
-/* for debug */
-body {
-    height: 2000px;
+.content {
+    max-width: 825px;
 }
 
 #searchBar.container {
@@ -42,4 +41,25 @@ body {
     height: 40px;
     background-color: #555555;
     position:fixed;
+}
+
+.game {
+    min-width: 125px;
+    max-width: 175px;
+    margin: 10px;
+    padding: 1px;
+}
+
+.game p {
+    margin-bottom: 5px;
+}
+
+.game img {
+    max-height: 250px;
+}
+
+.game:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    border: 1px solid #bbbbbb;
 }
