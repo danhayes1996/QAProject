@@ -41,7 +41,7 @@ function checkForGames() {
     }
 
     const resultsDiv = document.getElementById('searchResults');
-    makeRequest('GET', 'http://localhost:8080/GamesApp/api/game/getGames/' + searchStr)
+    makeRequest('GET', BASE_URL + GAMES + GET_GAMES + '/' + searchStr)
         .then(value => {
             if(value && value.length > 0) {
                 console.log("is array", Array.isArray(value), value)
@@ -67,7 +67,7 @@ function createGame(game, parentDiv) {
         window.location = "game.html";
     });
 
-    const h = document.createElement('h3');
+    const h = document.createElement('h6');
     h.innerText = game.name;
     const p = document.createElement('p');
     p.innerText = game.ageRating;

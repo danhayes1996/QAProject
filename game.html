@@ -8,11 +8,12 @@
     </head>
 
     <body onload="loadGame()">
-        <div id="content">
+        <div class="content">
             <!-- put api call results here -->
 
             <div id="game" class="card">
                 <div id="gameTitle" class="card-header"></div>
+                <p id="subheading" class="card-subtitle text-muted"></p> 
                 <div class="gameInfo container row">
                     <div id="description" class="col"></div>
                     <div id="image" class="col"></div>
@@ -20,13 +21,45 @@
 
                 <div id="ratingInfo">
                     <p id="rating"></p>
-                    <
+                    
                 </div>
             </div>
         </div>
 
+        <nav id="navBar" class="navbar navbar-light bg-light">
+            <a class="navbar-brand">Game</a>
+
+            <!-- btn for sign up/in if screen too small -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- sign in/up btns -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto text-right">
+                    <li id="home" class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li id="signin" class="nav-item">
+                        <a class="nav-link" href="login.html">Sign In</a>
+                    </li>
+                    <li id="signup" class="nav-item">
+                        <a class="nav-link" href="register.html">Sign Up</a>
+                    </li>
+                    <li id="account" class="nav-item">
+                        <a class="nav-link" href="account.html">Account Settings</a>
+                    </li>
+                    <li id="signout" class="nav-item">
+                        <a class="nav-link" onclick="signOut()">Sign out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
         <!-- Scripts  -->
         <script src="js/utils.js"></script>
+        <script src="js/constants.js"></script>
         <script src="js/game.js"></script>
 
         <!-- Optional JavaScript -->

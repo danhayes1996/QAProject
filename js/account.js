@@ -1,7 +1,7 @@
 function loadAccount (){
     const userId = sessionStorage.getItem('userId');
     if(userId) {
-        makeRequest('GET', 'http://localhost:8080/GamesApp/api/user/get/' + userId)
+        makeRequest('GET', BASE_URL + USERS + GET + '/' + userId)
             .then (value => {
                 //console.log(value);
                 if(value.error) {
@@ -49,7 +49,7 @@ function updateUserInfo() {
     }
     //console.log(data);
     const userId = sessionStorage.getItem('userId');
-    makeRequest('POST', 'http://localhost:8080/GamesApp/api/user/update/' + userId, JSON.stringify(data))
+    makeRequest('POST', BASE_URL + USERS + UPDATE + '/' + userId, JSON.stringify(data))
         .then(value => {
             //console.log(value);
             disableInputs();
@@ -87,7 +87,7 @@ function updatePassword() {
     if(pwd.value === cpwd.value && pwd.value !== "") {
         const userId = sessionStorage.getItem('userId');
         const data = { 'password' : pwd.value };
-        makeRequest('POST', 'http://localhost:8080/GamesApp/api/user/update/' + userId, JSON.stringify(data))
+        makeRequest('POST', BASE_URL + USERS + UPDATE + '/' + userId, JSON.stringify(data))
         .then (value => {
             console.log(value);
             if(value.error) {
@@ -107,7 +107,7 @@ function updatePassword() {
 function deleteAccount() {
     //window.confirm("test");
     const userId = sessionStorage.getItem('userId');
-    makeRequest('DELETE', 'http://localhost:8080/GamesApp/api/user/delete/' + userId)
+    makeRequest('DELETE', BASE_URL + USERS + REMOVE + '/' + userId)
         .then(value => {
             console.log(value);
             window.alert("Your account has been deleted, you will be returned to the home page.");

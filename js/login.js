@@ -7,7 +7,7 @@ function login() {
     };
     //const data = '{"email":"' + email + '","password":"' + password + '"}';
     //console.log(data);
-    makeRequest('POST', 'http://localhost:8080/GamesApp/api/user/verify', JSON.stringify(data))
+    makeRequest('POST', BASE_URL + USERS + VERIFY, JSON.stringify(data))
         .then(value => {
             console.log("value: ", value);
             if(!isNaN(value)) {
