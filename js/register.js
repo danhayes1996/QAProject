@@ -6,7 +6,7 @@ function signup() {
     }
     //console.log(data);
 
-    makeRequest('POST', 'http://localhost:8080/GamesApp/api/user/create', JSON.stringify(data))
+    makeRequest('POST', BASE_URL + USERS + CREATE, JSON.stringify(data))
         .then(value => {
             if(value.error){
                 // console.log(value);

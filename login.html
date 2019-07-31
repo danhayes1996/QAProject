@@ -44,8 +44,32 @@
                 <p>Incorrect login information.</p>
             </div>
         </div>
+
+        <nav id="navBar" class="navbar navbar-light bg-light">
+            <a class="navbar-brand">Sign In</a>
+
+            <!-- btn for sign up/in if screen too small -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- sign in/up btns -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto text-right">
+                    <li id="home" class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li id="signup" class="nav-item">
+                        <a class="nav-link" href="register.html">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
         <!-- Scripts  -->
         <script src="js/utils.js"></script>
+        <script src="js/constants.js"></script>
         <script src="js/login.js"></script>
 
         <!-- Optional JavaScript -->
