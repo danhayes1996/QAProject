@@ -215,3 +215,23 @@ function signOut() {
     sessionStorage.removeItem('userId');
     window.location = "game.html";
 }
+
+function setupNav() {
+    const sIn = document.getElementById('signin'); 
+    const sUp = document.getElementById('signup'); 
+    const sOut = document.getElementById('signout'); 
+    const acc = document.getElementById('account'); 
+
+    const userId = sessionStorage.getItem('userId');
+    if(userId) {
+        sIn.style.display = "none";
+        sUp.style.display = "none";
+        sOut.style.display = "block";
+        acc.style.display = "block";
+    } else {
+        sIn.style.display = "block";
+        sUp.style.display = "block";
+        sOut.style.display = "none";
+        acc.style.display = "none";
+    }
+}
