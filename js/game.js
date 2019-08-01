@@ -122,7 +122,7 @@ function createReview(review, parentDiv) {
     const header = document.createElement('div');
     header.className = "reviewHeader d-flex";
 
-    const title = createElement('h6', review.title, 'reviewTitle card-title', header);
+    createElement('h6', review.title, 'reviewTitle card-title', header);
     createElement('p', ' - ' + review.user.firstName + ' ' + review.user.lastName, 'reviewUser text-muted', header);
 
     const content = createElement('div', review.content, 'card-body reviewContent');
@@ -130,21 +130,24 @@ function createReview(review, parentDiv) {
     upvotes.className = "reviewUpvote";
 
     const p = createElement('p', 'Upvotes: ' + review.upvotes, '', upvotes);
-
-    const like = createButton('Upvote', 'upvoteBtn', p);
-    like.onclick = (event) => {
-        sendUpvote(review.id, review.upvotes + 1);
-    };
-    
-    const dislike = createButton('Downvote', 'downvoteBtn', p);
-    dislike.onclick = (event) => {
-        sendUpvote(review.id, review.upvotes - 1);
-    };
-
     parentDiv.append(header, content, upvotes);
     
+    
     const userId = sessionStorage.getItem('userId');
+    if(userId) {
+        const like = createButton('Upvote', 'upvoteBtn', p);
+        like.onclick = (event) => {
+            sendUpvote(review.id, review.upvotes + 1);
+        };
+        
+        const dislike = createButton('Downvote', 'downvoteBtn', p);
+        dislike.onclick = (event) => {
+            sendUpvote(review.id, review.upvotes - 1);
+        };
+    }
+
     if(parseInt(userId) === review.user.id){
+
         const deleteBtn = createButton('Delete', 'deleteBtn', p);
         deleteBtn.onclick = (event) => {
             deleteReview(review.id);
@@ -162,6 +165,7 @@ function sendReview() {
 
     makeRequest('POST', BASE_URL + REVIEWS + CREATE + '/' + userId + '/' + gameId, JSON.stringify(userData)) 
         .then(value => {
+            console.log(value);
             if(!value.error) {
                 window.location = "game.html";
             }
@@ -173,7 +177,9 @@ function sendUpvote(reviewId, upvotes) {
  
     makeRequest('POST', BASE_URL + REVIEWS + UPDATE + '/' + reviewId, userData)
         .then(value => {
-            window.location = "game.html";
+            if(!value.error){
+                window.location = "game.html";
+            }
         });
 }
 

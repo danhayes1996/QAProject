@@ -102,12 +102,13 @@ function updatePassword() {
 
 function deleteAccount() {
     const userId = sessionStorage.getItem('userId');
+
     makeRequest('DELETE', BASE_URL + USERS + REMOVE + '/' + userId)
         .then(value => {
             window.alert("Your account has been deleted, you will be returned to the home page.");
             sessionStorage.removeItem('userId');
             window.location = "home.html";
-        })
+        });
 }
 
 function signOut() {
