@@ -4,23 +4,21 @@ function signup() {
     for(input of inputs) {
         data[input.id] = input.value;
     }
-    //console.log(data);
 
     makeRequest('POST', BASE_URL + USERS + CREATE, JSON.stringify(data))
         .then(value => {
             if(value.error){
-                // console.log(value);
                 clearErrorDiv();
                 const errDiv = document.getElementById('registerError');
+                errDiv.style.display = "block";
+
                 const p = document.createElement('p');
                 p.innerText = value.message;
                 errDiv.append(p);
-                errDiv.style.display = "block";
             } else {
                 window.location = "home.html";
             }
         });
-
     return false;
 }
 

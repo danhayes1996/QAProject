@@ -3,7 +3,6 @@ function loadAccount (){
     if(userId) {
         makeRequest('GET', BASE_URL + USERS + GET + '/' + userId)
             .then (value => {
-                //console.log(value);
                 if(value.error) {
                     window.location = "login.html";
                 } else {
@@ -47,11 +46,9 @@ function updateUserInfo() {
     for(i of inputs){
         data[i.id] = i.value;
     }
-    //console.log(data);
     const userId = sessionStorage.getItem('userId');
     makeRequest('POST', BASE_URL + USERS + UPDATE + '/' + userId, JSON.stringify(data))
         .then(value => {
-            //console.log(value);
             disableInputs();
             showUpdateBtn();
         });
@@ -89,7 +86,6 @@ function updatePassword() {
         const data = { 'password' : pwd.value };
         makeRequest('POST', BASE_URL + USERS + UPDATE + '/' + userId, JSON.stringify(data))
         .then (value => {
-            console.log(value);
             if(value.error) {
                 window.alert("Password couldnt be updated.");
             } else { 
@@ -105,11 +101,9 @@ function updatePassword() {
 }
 
 function deleteAccount() {
-    //window.confirm("test");
     const userId = sessionStorage.getItem('userId');
     makeRequest('DELETE', BASE_URL + USERS + REMOVE + '/' + userId)
         .then(value => {
-            console.log(value);
             window.alert("Your account has been deleted, you will be returned to the home page.");
             sessionStorage.removeItem('userId');
             window.location = "home.html";

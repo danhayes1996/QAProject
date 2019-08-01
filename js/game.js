@@ -5,15 +5,9 @@ function loadGame() {
         .then(game => {
             makeRequest('GET', BASE_URL + REVIEWS + GET_BY_GAME + '/'+ gameId)
                 .then(reviews => {
-                    // console.log(value);
                     createPageLayout(game, reviews);
 
-                }).catch(reason => {
-                    console.log(reason);
                 });
-
-        }).catch(reason => {
-            console.log(reason);
         });
 }
 
@@ -46,7 +40,7 @@ function setupWriteReview(parentDiv) {
     }
 }
 
-function createWriteReview(parentDiv/*, titleText, contentText*/){
+function createWriteReview(parentDiv){
     const div = document.createElement('div');
     div.className = 'writeReview';
 
@@ -54,18 +48,12 @@ function createWriteReview(parentDiv/*, titleText, contentText*/){
     title.id = "userReviewTitle";
     title.setAttribute('type', 'text');
     title.setAttribute('placeholder', 'Review Title...');
-    //if(titleText) {
-        //title.setAttribute('value', titleText);
-    //}
     div.append(title);
 
     const content = createElement('textarea', '', 'reviewTB');
     content.id = "userReviewContent";
     content.setAttribute('rows', '5');
     content.setAttribute('placeholder', 'Review Content...');
-    //if(contentText) {
-        //content.value = contentText;
-    //}
     div.append(content);
     
     const submitBtn = document.createElement('input');
@@ -105,7 +93,7 @@ function createRequireAccount(parentDiv) {
 
 function createReviews(reviews, parentDiv) {
     const div = document.createElement('div');
-    div.className = "card";
+    div.className = "card reviewsDiv";
    
     const header = document.createElement('div');
     header.className = "card-header";
@@ -131,7 +119,6 @@ function createReviews(reviews, parentDiv) {
 }
 
 function createReview(review, parentDiv) {
-    //console.log(review);
     const header = document.createElement('div');
     header.className = "reviewHeader d-flex";
 
@@ -162,24 +149,8 @@ function createReview(review, parentDiv) {
         deleteBtn.onclick = (event) => {
             deleteReview(review.id);
         };
-
-        // const updateBtn = createButton('Update', 'updateBtn', p);
-        // updateBtn.onclick = (event) => {
-        //     setupUpdate(review.id, title, content, parentDiv);
-        // };
     }
 }
-
-// function setupUpdate(reviewId, title, content, parentDiv) {
-//     while(parentDiv.lastChild) {
-//         parentDiv.removeChild(parentDiv.lastChild);
-//     }
-
-//     const titleText = title.innerText;
-//     const contentText = content.innerText;  
-//     createWriteReview(parentDiv, titleText, contentText);
-
-// }
 
 function sendReview() {
     const userId = sessionStorage.getItem('userId');
@@ -191,9 +162,7 @@ function sendReview() {
 
     makeRequest('POST', BASE_URL + REVIEWS + CREATE + '/' + userId + '/' + gameId, JSON.stringify(userData)) 
         .then(value => {
-            if(value.error) {
-                console.log(value.message);
-            } else {
+            if(!value.error) {
                 window.location = "game.html";
             }
         });
@@ -232,7 +201,6 @@ function deleteReview(reviewId) {
     makeRequest('DELETE', BASE_URL + REVIEWS + REMOVE + '/' + reviewId)
         .then(value => {
             if(!value.error){
-                console.log('deleted');
                 window.location = "game.html";
             }
         });

@@ -1,4 +1,3 @@
-
 function populate() {
     setupNav();
     getNewReleases();    
@@ -68,7 +67,6 @@ function signOut() {
 }
 
 function checkForGames() {
-    //check for games matching text
     clearSearchResults();
     const searchStr = document.getElementById('searchText').value.trim();
     if(searchStr === "") {
@@ -80,25 +78,20 @@ function checkForGames() {
     makeRequest('GET', BASE_URL + GAMES + GET_GAMES + '/' + searchStr)
         .then(value => {
             if(value && value.length > 0) {
-                console.log("is array", Array.isArray(value), value)
                 for(const key in value){
                     createGameInList(value[key], resultsDiv);
                 }
-                //display results
                 document.getElementById("searchResults").style.display = "block";
             } else {
-                console.log("hide");
                 hideResults();
             }
         });
 }
 
 function createGameInList(game, parentDiv) {
-    //console.log('game', game);
     const div = document.createElement('div');
     div.className = 'dropdown-item';
     div.addEventListener('click', (e) => {
-        //console.log("div click");
         sessionStorage.setItem('gameId', game.id);
         window.location = "game.html";
     });
