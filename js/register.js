@@ -16,7 +16,7 @@ function signup() {
                 p.innerText = value.message;
                 errDiv.append(p);
             } else {
-                window.location = "home.html";
+                window.location = "login.html";
             }
         });
     return false;
